@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071524">
+<meta name="description" content="Atlas PWA imersivo de Anatomia Humana Topográfica de Tórax">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="styles.css">
+<title>Atlas Imersivo — Anatomia do Tórax</title>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="pulse" aria-hidden="true"></div>
+    <div><strong>ATLAS IMERSIVO</strong><span>Anatomia Humana · Tórax</span></div>
+  </div>
+  <div class="top-actions">
+    <button id="installBtn" class="ghost" hidden>⬇ Instalar</button>
+    <button id="fullscreenBtn" class="iconbtn" title="Tela cheia" aria-label="Tela cheia">⛶</button>
+    <button id="soundBtn" class="iconbtn" title="Som" aria-label="Ativar ou desativar som">🔊</button>
+    <button id="a11yBtn" class="iconbtn" title="Acessibilidade" aria-label="Abrir acessibilidade">♿</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">UNIVERSIDADE ESTADUAL DE MARINGÁ · DCM</span>
+    <h1>ANATOMIA HUMANA<br><em>TOPOGRÁFICA DE TÓRAX</em></h1>
+    <p>Roteiro prático interativo com galeria fotográfica, anotações locais, busca, leitura por voz e navegação por grupos.</p>
+    <div class="stats">
+      <div><b id="countTotal">0</b><span>estruturas</span></div>
+      <div><b>4</b><span>grupos</span></div>
+      <div><b>∞</b><span>fotos por estrutura</span></div>
+    </div>
+  </div>
+  <div class="orbital" aria-hidden="true"><div class="core">3D</div><i></i><i></i><i></i></div>
+</section>
+
+<nav class="groupnav" aria-label="Grupos do roteiro">
+  <button class="tab active" data-group="ALL">TODOS</button>
+  <button class="tab" data-group="G1">G1 · TÓRAX</button>
+  <button class="tab" data-group="G2">G2 · VEIAS</button>
+  <button class="tab" data-group="G3">G3 · MAMA</button>
+  <button class="tab" data-group="G4">G4 · MEDIASTINO</button>
+</nav>
+
+<div class="toolbar">
+  <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Buscar estrutura..." aria-label="Buscar estrutura"></label>
+  <button id="exportBtn" class="ghost">Exportar dados</button>
+  <label class="ghost filelabel">Importar dados<input id="importData" type="file" accept=".json" hidden></label>
+</div>
+
+<main id="conteudo" tabindex="-1">
+  <div id="sections"></div>
+</main>
+
+<aside id="a11yPanel" class="panel" aria-hidden="true" aria-label="Painel de acessibilidade">
+  <button class="close" id="closeA11y" aria-label="Fechar">×</button>
+  <h2>Acessibilidade</h2>
+  <button id="contrastBtn">Alto contraste</button>
+  <button id="fontPlus">Aumentar texto</button>
+  <button id="fontMinus">Diminuir texto</button>
+  <button id="motionBtn">Reduzir movimento</button>
+  <button id="readPage">Ler página</button>
+</aside>
+
+<div id="modal" class="modal" aria-hidden="true">
+ <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <button class="close modal-close" aria-label="Fechar">×</button>
+  <div class="modal-grid">
+   <section class="viewer">
+    <div class="image-stage" id="imageStage"><img id="mainImage" alt=""></div>
+    <div id="thumbs" class="thumbs"></div>
+   </section>
+   <section class="details">
+    <span id="modalGroup" class="badge"></span>
+    <h2 id="modalTitle"></h2>
+    <p id="imageName" class="filename"></p>
+    <div class="detail-actions">
+      <button id="speakBtn">🔊 Ouvir nome</button>
+      <label class="upload">＋ Adicionar fotos<input id="photoInput" type="file" accept="image/*" multiple hidden></label>
+    </div>
+    <label class="field">Informações pertinentes
+      <textarea id="notes" rows="9" placeholder="Inclua localização, função, relações anatômicas, observações da peça, dicas de prova..."></textarea>
+    </label>
+    <p class="local-note">As fotos adicionadas e as anotações ficam salvas neste dispositivo. A imagem padrão do card é lida de <code>assets/estruturas/N.png</code>.</p>
+   </section>
+  </div>
+ </div>
+</div>
+
+<footer>Roteiro prático · Anatomia Humana · Experiência PWA offline</footer>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
