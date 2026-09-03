@@ -3,9 +3,9 @@
 PWA estático pronto para GitHub Pages.
 
 ## Conteúdo
-- 136 entradas/estruturas, na ordem integral do roteiro.
-- Grupos G1, G2, G3 e G4.
-- Cada entrada recebe um arquivo padrão sequencial em `assets/estruturas/`: `1.png`, `2.png`, ... `136.png`.
+- 64 entradas/estruturas, exclusivamente dos grupos G1 e G2, preservando a ordem do roteiro.
+- Somente grupos G1 e G2.
+- Cada entrada recebe um arquivo padrão sequencial em `assets/estruturas/`: `1.png`, `2.png`, ... `64.png`.
 - Os PNGs incluídos são placeholders elegantes: substitua cada arquivo pela foto anatômica correspondente, mantendo o mesmo nome.
 - Dentro do app, cada estrutura também aceita múltiplas fotos adicionais, armazenadas localmente via IndexedDB.
 - Campo de “Informações pertinentes” por estrutura, salvo localmente.
